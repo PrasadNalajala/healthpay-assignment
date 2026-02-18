@@ -1,0 +1,570 @@
+{
+    "session_id": "cad6cb7c-2ec5-436b-b04f-91780e18f08f",
+    "claim_id": "123123",
+    "status": "NO_CAMOUNT",
+    "claim_type": "OPD",
+    "created_at": "2026-02-16T15:38:50.985922+05:30",
+    "edited_data": {
+        "nme_analysis": {
+            "bills": [
+                {
+                    "bill": {
+                        "bill_id": "dba53ff23412",
+                        "bill_type": "consolidated_bill",
+                        "bill_date": "2025-02-01",
+                        "invoice_number": "BILL-2025-789456",
+                        "net_amount": 6418.65,
+                        "total_discount": 0.0,
+                        "facility_details": {
+                            "name": "City Medical Center"
+                        },
+                        "page_number": 7
+                    },
+                    "items": [
+                        {
+                            "s.no.": 1,
+                            "item_id": "1",
+                            "item_name": "Room Charges - Semi-Private (5 days)",
+                            "category": "Room Rent",
+                            "final_amount": 1000.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 2,
+                            "item_id": "2",
+                            "item_name": "Admission Fee",
+                            "category": "File / Admission",
+                            "final_amount": 150.0,
+                            "is_nme": true,
+                            "nme_item_name": "Admission Fee",
+                            "nme_bill_amount": 150.0,
+                            "deduction_reason": "Administration/Admission/Registration Charges: Not Payable"
+                        },
+                        {
+                            "s.no.": 3,
+                            "item_id": "3",
+                            "item_name": "Emergency Room Services",
+                            "category": "Casualty / emergency chrgs",
+                            "final_amount": 500.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 4,
+                            "item_id": "4",
+                            "item_name": "Physician Consultation - Dr. Sarah Johnson",
+                            "category": "Consultation",
+                            "final_amount": 750.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 5,
+                            "item_id": "5",
+                            "item_name": "Chest X-Ray",
+                            "category": "Imageology",
+                            "final_amount": 240.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 6,
+                            "item_id": "6",
+                            "item_name": "CT Scan - Chest",
+                            "category": "Imageology",
+                            "final_amount": 800.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 7,
+                            "item_id": "7",
+                            "item_name": "Complete Blood Count (CBC)",
+                            "category": "Labs/Bio/Micro/Pathology/Immuno/Histo/Cyto chemistry",
+                            "final_amount": 135.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 8,
+                            "item_id": "8",
+                            "item_name": "Blood Culture Test",
+                            "category": "Labs/Bio/Micro/Pathology/Immuno/Histo/Cyto chemistry",
+                            "final_amount": 160.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 9,
+                            "item_id": "9",
+                            "item_name": "Arterial Blood Gas Analysis",
+                            "category": "Labs/Bio/Micro/Pathology/Immuno/Histo/Cyto chemistry",
+                            "final_amount": 95.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 10,
+                            "item_id": "10",
+                            "item_name": "IV Fluids - Normal Saline",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 250.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 11,
+                            "item_id": "11",
+                            "item_name": "Injection - Ceftriaxone 1g",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 150.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 12,
+                            "item_id": "12",
+                            "item_name": "Injection - Paracetamol",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 48.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 13,
+                            "item_id": "13",
+                            "item_name": "Nebulization Treatment",
+                            "category": "Nebulizor",
+                            "final_amount": 140.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 14,
+                            "item_id": "14",
+                            "item_name": "Oxygen Therapy (per hour)",
+                            "category": "Oxygen",
+                            "final_amount": 240.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 15,
+                            "item_id": "15",
+                            "item_name": "Nursing Care (per day)",
+                            "category": "Nursing Charges",
+                            "final_amount": 500.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 16,
+                            "item_id": "16",
+                            "item_name": "ICU Monitoring Equipment",
+                            "category": "ICU Charges",
+                            "final_amount": 400.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 17,
+                            "item_id": "17",
+                            "item_name": "Physiotherapy Session",
+                            "category": "Physiotherapy",
+                            "final_amount": 180.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 18,
+                            "item_id": "18",
+                            "item_name": "Medical Supplies & Consumables",
+                            "category": "Others",
+                            "final_amount": 250.0,
+                            "is_nme": true,
+                            "nme_item_name": "Medical Supplies & Consumables",
+                            "nme_bill_amount": 250.0,
+                            "deduction_reason": "Incidental Expenses / Misc. Charges (Not Explained): Not Payable"
+                        },
+                        {
+                            "s.no.": 19,
+                            "item_id": "19",
+                            "item_name": "Laboratory Processing Fee",
+                            "category": "Labs/Bio/Micro/Pathology/Immuno/Histo/Cyto chemistry",
+                            "final_amount": 75.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 20,
+                            "item_id": "20",
+                            "item_name": "Pharmacy Dispensing Fee",
+                            "category": "Others",
+                            "final_amount": 50.0,
+                            "is_nme": true,
+                            "nme_item_name": "Pharmacy Dispensing Fee",
+                            "nme_bill_amount": 50.0,
+                            "deduction_reason": "Documentation Charges / Administrative Expenses: Not Payable"
+                        }
+                    ]
+                },
+                {
+                    "bill": {
+                        "bill_id": "49043e3d4bb7",
+                        "bill_type": "itemized_bill",
+                        "bill_date": "2025-02-01",
+                        "invoice_number": "RCP-2025-456789",
+                        "net_amount": 285.0,
+                        "total_discount": 0.0,
+                        "facility_details": {
+                            "name": "City Medical Center"
+                        },
+                        "page_number": 7
+                    },
+                    "items": [
+                        {
+                            "s.no.": 21,
+                            "item_id": "1",
+                            "item_name": "Consultation Fee - Dr. Sarah Johnson",
+                            "category": "Consultation",
+                            "final_amount": 150.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 22,
+                            "item_id": "2",
+                            "item_name": "Laboratory Tests (CBC, Blood Sugar)",
+                            "category": "Labs/Bio/Micro/Pathology/Immuno/Histo/Cyto chemistry",
+                            "final_amount": 80.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 23,
+                            "item_id": "3",
+                            "item_name": "Medications (Prescription)",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 45.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 24,
+                            "item_id": "4",
+                            "item_name": "Service Charges",
+                            "category": "Others",
+                            "final_amount": 10.0,
+                            "is_nme": true,
+                            "nme_item_name": "Service Charges",
+                            "nme_bill_amount": 10.0,
+                            "deduction_reason": "Administrative Expenses: Not Payable"
+                        }
+                    ]
+                },
+                {
+                    "bill": {
+                        "bill_id": "362b9bd63e0e",
+                        "bill_type": "itemized_bill",
+                        "bill_date": "2025-02-02",
+                        "invoice_number": "INV-2025-123789",
+                        "net_amount": 206.35,
+                        "total_discount": 21.63,
+                        "facility_details": {
+                            "name": "City Medical Center"
+                        },
+                        "page_number": 10
+                    },
+                    "items": [
+                        {
+                            "s.no.": 25,
+                            "item_id": "1",
+                            "item_name": "Amoxicillin 500mg Capsules",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 31.5,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 26,
+                            "item_id": "2",
+                            "item_name": "Acetaminophen 500mg Tablets",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 16.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 27,
+                            "item_id": "3",
+                            "item_name": "Cetirizine 10mg Tablets",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 9.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 28,
+                            "item_id": "4",
+                            "item_name": "Omeprazole 20mg Capsules",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 16.8,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 29,
+                            "item_id": "5",
+                            "item_name": "Albuterol Inhaler",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 35.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 30,
+                            "item_id": "6",
+                            "item_name": "Vitamin D3 1000 IU",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 12.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 31,
+                            "item_id": "7",
+                            "item_name": "Probiotic Capsules",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 25.5,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 32,
+                            "item_id": "8",
+                            "item_name": "Saline Nasal Spray",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 8.5,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 33,
+                            "item_id": "9",
+                            "item_name": "Antiseptic Mouthwash 250ml",
+                            "category": "Medicines Supplied By Hospital",
+                            "final_amount": 12.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 34,
+                            "item_id": "10",
+                            "item_name": "Digital Thermometer",
+                            "category": "Medicines",
+                            "final_amount": 15.0,
+                            "is_nme": true,
+                            "nme_item_name": "Digital Thermometer",
+                            "nme_bill_amount": 15.0,
+                            "deduction_reason": "Thermometer: Not Payable"
+                        },
+                        {
+                            "s.no.": 35,
+                            "item_id": "11",
+                            "item_name": "Medication Counseling",
+                            "category": "Consultation",
+                            "final_amount": 25.0,
+                            "is_nme": false
+                        },
+                        {
+                            "s.no.": 36,
+                            "item_id": "12",
+                            "item_name": "Home Delivery Service",
+                            "category": "Others",
+                            "final_amount": 10.0,
+                            "is_nme": true,
+                            "nme_item_name": "Home Delivery Service",
+                            "nme_bill_amount": 10.0,
+                            "deduction_reason": "Courier Charges: Not Payable"
+                        }
+                    ]
+                }
+            ]
+        },
+        "patient_summary": {
+            "patient_details": {
+                "patient_name": "John Michael Smith",
+                "patient_mobile": "+1-555-0123",
+                "patient_bank_account_no": "1234567890123",
+                "patient_bank_name": "Global Trust Bank",
+                "patient_bank_branch_name": "Main Branch - New York",
+                "patient_bank_account_type": "Savings",
+                "patient_bank_ifsc_code": "GTB000123456",
+                "patient_email": "john.smith@email.com",
+                "patient_age": 40,
+                "patient_dob": "1985-03-15",
+                "patient_policy_no": "POL-987654321"
+            },
+            "hospitalization_details": {
+                "doa": "2025-01-20",
+                "dod": "2025-01-25",
+                "claimed_amount": 450.0,
+                "estimated_days/los": 0,
+                "patient_paid_amount": 0.0,
+                "type_of_nature_of_treatment": "Allopathy",
+                "nature_of_treatment": "Allopathy",
+                "provisional_final_diagnosis": "Acute Bronchitis (ICD-10: J20.9)",
+                "treating_doctor_name": "Dr. Sarah Johnson",
+                "treating_doctor_registration_number": "MD-987654",
+                "claim_registered_mobile_no": "+1-555-0123",
+                "claim_registered_email_id": "john.smith@email.com",
+                "sum_insured": 0.0
+            },
+            "clinical_details": {
+                "probable_line_of_treatment": "Medical",
+                "physician_name": "Dr. Sarah Johnson"
+            }
+        }
+    },
+    "segments": {
+        "aggregated_segments": {
+            "claim_forms": {
+                "page_ranges": [
+                    { "start": 1, "end": 1 }
+                ]
+            },
+            "cheque_or_bank_details": {
+                "page_ranges": [
+                    { "start": 2, "end": 2 }
+                ]
+            },
+            "identity_document": {
+                "page_ranges": [
+                    { "start": 3, "end": 3 }
+                ]
+            },
+            "discharge_summary": {
+                "page_ranges": [
+                    { "start": 4, "end": 4 }
+                ]
+            },
+            "prescription": {
+                "page_ranges": [
+                    { "start": 5, "end": 5 }
+                ]
+            },
+            "investigation_report": {
+                "page_ranges": [
+                    { "start": 6, "end": 6 },
+                    { "start": 11, "end": 11 },
+                    { "start": 12, "end": 12 }
+                ]
+            },
+            "itemized_bill": {
+                "page_ranges": [
+                    { "start": 7, "end": 7 },
+                    { "start": 10, "end": 10 }
+                ]
+            },
+            "other": {
+                "page_ranges": [
+                    { "start": 8, "end": 8 },
+                    { "start": 13, "end": 13 },
+                    { "start": 14, "end": 14 },
+                    { "start": 15, "end": 15 },
+                    { "start": 16, "end": 16 },
+                    { "start": 17, "end": 18 }
+                ]
+            },
+            "consolidated_bill": {
+                "page_ranges": [
+                    { "start": 9, "end": 9 }
+                ]
+            }
+        }
+    },
+    "audit_analysis": {
+        "original_claimed_amount": 450.0,
+        "original_total_of_bills": 6910.0,
+        "updated_claimed_amount": 450.0,
+        "true_total_of_bills": 6910.0,
+        "discrepancy_amount": 6460.0,
+        "status": "UNDERCLAIMED",
+        "discrepancy_reason": "Claim form specifies $450.00 for Jan 10 visit, but submitted bills cover subsequent IPD admission (Jan 20-25) and OPD follow-ups (Feb 1-2) totaling $6,910.00.",
+        "bills_analyzed": 3,
+        "duplicates_found": 0,
+        "bills_with_corrections": 0,
+        "patches_applied": 10,
+        "medical_legibility_issues": 6,
+        "policy_violations_count": 2,
+        "policy_remarks": "Supplements (Vitamin D3, Probiotics) are not covered under policy rules.",
+        "medical_legibility": {
+            "prescription_bill_match": false,
+            "diagnosis_treatment_consistent": true,
+            "flagged_items": [
+                {
+                    "item_name": "Omeprazole 20mg Capsules",
+                    "bill_id": "362b9bd63e0e",
+                    "flag_reason": "Not in prescription",
+                    "recommendation": "Verify with prescription or mark as non-admissible"
+                },
+                {
+                    "item_name": "Albuterol Inhaler",
+                    "bill_id": "362b9bd63e0e",
+                    "flag_reason": "Not in prescription",
+                    "recommendation": "Verify with prescription or mark as non-admissible"
+                },
+                {
+                    "item_name": "Cetirizine 10mg Tablets",
+                    "bill_id": "362b9bd63e0e",
+                    "flag_reason": "Excessive quantity (10 vs 5 prescribed)",
+                    "recommendation": "Reduce admissible quantity to 5"
+                },
+                {
+                    "item_name": "Laboratory Tests (CBC, Blood Sugar)",
+                    "bill_id": "49043e3d4bb7",
+                    "flag_reason": "Not in prescription",
+                    "recommendation": "Request justification or lab order"
+                }
+            ],
+            "summary": "Multiple medicines in pharmacy bill (Feb 2) are not present in the prescription (Feb 1). Lab tests in receipt (Feb 1) are not ordered in the prescription."
+        },
+        "policy_violations": [
+            {
+                "rule_name": "Health supplements not covered",
+                "item_name": "Vitamin D3 1000 IU",
+                "bill_id": "362b9bd63e0e",
+                "item_s_no": 30,
+                "violation_details": "Vitamin D3 is a health supplement",
+                "amount_impacted": 12.0,
+                "recommendation": "Mark as non-admissible"
+            },
+            {
+                "rule_name": "Health supplements not covered",
+                "item_name": "Probiotic Capsules",
+                "bill_id": "362b9bd63e0e",
+                "item_s_no": 31,
+                "violation_details": "Probiotics are health supplements",
+                "amount_impacted": 25.5,
+                "recommendation": "Mark as non-admissible"
+            }
+        ],
+        "icd_codes": [
+            {
+                "code": "J20.9",
+                "description": "Acute bronchitis, unspecified",
+                "source": "Claim Form (Page 1) - Diagnosis: Acute Bronchitis",
+                "type": "primary"
+            },
+            {
+                "code": "J18.9",
+                "description": "Pneumonia, unspecified organism",
+                "source": "Discharge Summary (Page 2) - Admission Diagnosis: Community Acquired Pneumonia",
+                "type": "primary"
+            },
+            {
+                "code": "R50.9",
+                "description": "Fever, unspecified",
+                "source": "Discharge Summary (Page 2) - Symptoms: fever",
+                "type": "secondary"
+            },
+            {
+                "code": "R05",
+                "description": "Cough",
+                "source": "Discharge Summary (Page 2) - Symptoms: cough",
+                "type": "secondary"
+            },
+            {
+                "code": "R06.0",
+                "description": "Dyspnea",
+                "source": "Discharge Summary (Page 2) - Symptoms: shortness of breath",
+                "type": "secondary"
+            }
+        ]
+    },
+    "validation_scores": {
+        "bills_score": 33.3,
+        "claimed_amount_score": 0.0,
+        "categorization_score": 25.0,
+        "amount_score": 1369.8,
+        "amount_difference": 6164.3,
+        "is_negative": false,
+        "is_diff_same_as_consol_dis": false,
+        "recalculated_amount_score": 1367.63,
+        "recalculated_difference": 6154.35,
+        "contains_handwritten_bill": false
+    },
+    "review_notes": "No claimed amount extracted. Please review."
+}
