@@ -9,6 +9,7 @@ export default function ClaimPanel({ onJumpToPage }) {
   const [q, setQ] = useState("");
   const [showNmeOnly, setShowNmeOnly] = useState(false);
   const [expanded, setExpanded] = useState({});
+  const [debouncedQ, setDebouncedQ] = useState(q);
 
   useEffect(() => {
     fetch("/data.json")
@@ -16,6 +17,12 @@ export default function ClaimPanel({ onJumpToPage }) {
       .then(setData)
       .catch(() => setData(null));
   }, []);
+
+  // debounce search input for better UX
+  useEffect(() => {
+    const id = setTimeout(() => setDebouncedQ(q.trim()), 300);
+    return () => clearTimeout(id);
+  }, [q]);
   // derive safe defaults so hooks order is stable even before data loads
   const edited_data = data?.edited_data ?? {};
   const audit_analysis = data?.audit_analysis ?? {};
@@ -55,19 +62,37 @@ export default function ClaimPanel({ onJumpToPage }) {
   }
 
   const filteredBills = useMemo(() => {
+    const needle = debouncedQ || "";
     return bills
       .map((b) => {
         const items = (b.items || []).filter((it) => {
           if (showNmeOnly && !it.is_nme) return false;
-          if (!q) return true;
-          return it.item_name?.toLowerCase().includes(q.toLowerCase());
+          if (!needle) return true;
+          return it.item_name?.toLowerCase().includes(needle.toLowerCase());
         });
         return { ...b, items };
       })
       .filter((b) => b.items.length > 0);
-  }, [bills, q, showNmeOnly]);
+  }, [bills, debouncedQ, showNmeOnly]);
 
-  if (!data) return <div>Loading claim data… Place data.json in the repo root /public folder.</div>;
+  if (!data)
+    return (
+      <div className="space-y-4 p-4">
+        <div className="animate-pulse bg-white p-4 rounded shadow-sm">
+          <div className="h-4 bg-gray-200 rounded w-1/3 mb-3" />
+          <div className="h-8 bg-gray-200 rounded w-full mb-2" />
+          <div className="h-8 bg-gray-200 rounded w-full" />
+        </div>
+        <div className="animate-pulse bg-white p-4 rounded shadow-sm">
+          <div className="h-4 bg-gray-200 rounded w-1/4 mb-3" />
+          <div className="h-6 bg-gray-200 rounded w-full" />
+        </div>
+        <div className="animate-pulse bg-white p-4 rounded shadow-sm">
+          <div className="h-4 bg-gray-200 rounded w-1/4 mb-3" />
+          <div className="h-32 bg-gray-200 rounded w-full" />
+        </div>
+      </div>
+    );
 
   function toggleExpand(id) {
     setExpanded((s) => ({ ...s, [id]: !s[id] }));
@@ -87,7 +112,7 @@ export default function ClaimPanel({ onJumpToPage }) {
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-3 gap-4 text-sm">
+        <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
           <div className="p-3 bg-gray-50 rounded">
             <div className="text-xs text-gray-500">Claimed</div>
             <div className="font-semibold"><Money value={claimed} /></div>
@@ -125,21 +150,27 @@ export default function ClaimPanel({ onJumpToPage }) {
           </div>
         </div>
 
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3 flex flex-col sm:flex-row gap-2 items-stretch">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search items..."
-            className="flex-1 px-3 py-2 border rounded"
+            aria-label="Search items"
+            className="flex-1 px-3 py-3 sm:py-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-200"
           />
-          <button onClick={() => setQ("")} className="px-3 py-2 bg-white border rounded">Clear</button>
-          <label className="inline-flex items-center space-x-2 text-sm">
-            <input type="checkbox" checked={showNmeOnly} onChange={(e) => setShowNmeOnly(e.target.checked)} />
-            <span>Show NME only</span>
-          </label>
+          <div className="flex gap-2 sm:gap-3">
+            <button onClick={() => setQ("")} className="px-4 py-3 sm:px-3 sm:py-2 bg-white border rounded w-full sm:w-auto">Clear</button>
+            <label className="inline-flex items-center space-x-2 text-sm px-3 py-2 bg-white border rounded select-none">
+              <input type="checkbox" checked={showNmeOnly} onChange={(e) => setShowNmeOnly(e.target.checked)} />
+              <span>Show NME only</span>
+            </label>
+          </div>
         </div>
 
         <div className="mt-4 space-y-3">
+          {filteredBills.length === 0 && (
+            <div className="p-4 bg-white rounded text-sm text-gray-600">No items match your search.</div>
+          )}
           {filteredBills.map((b) => {
             const bill = b.bill;
             const isOpen = expanded[bill.bill_id];
@@ -156,16 +187,25 @@ export default function ClaimPanel({ onJumpToPage }) {
                       <div className="text-sm">Page: <button className="text-blue-600 underline" onClick={() => onJumpToPage(bill.page_number)}>{bill.page_number}</button></div>
                     </div>
                     <div>
-                      <button onClick={() => toggleExpand(bill.bill_id)} className="px-3 py-1 bg-white border rounded">
+                      <button
+                        onClick={() => toggleExpand(bill.bill_id)}
+                        aria-expanded={isOpen}
+                        aria-controls={`bill-${bill.bill_id}`}
+                        className="px-4 py-2 bg-white border rounded touch-manipulation"
+                      >
                         {isOpen ? "Collapse" : "Expand"}
                       </button>
                     </div>
                   </div>
                 </div>
 
-                {isOpen && (
-                  <div className="p-3 bg-gray-50">
-                    <table className="w-full text-sm">
+                <div
+                  id={`bill-${bill.bill_id}`}
+                  className={`p-3 bg-gray-50 transition-[max-height,opacity] duration-300 overflow-hidden ${isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+                >
+                  {/* desktop table */}
+                  <div className="hidden sm:block overflow-auto">
+                    <table className="min-w-[700px] w-full text-sm">
                       <thead>
                         <tr className="text-left text-xs text-gray-600">
                           <th className="w-1/12">#</th>
@@ -190,7 +230,20 @@ export default function ClaimPanel({ onJumpToPage }) {
                       </tbody>
                     </table>
                   </div>
-                )}
+                  {/* mobile stacked list */}
+                  <div className="sm:hidden space-y-2">
+                    {b.items.map((it) => (
+                      <div key={it.item_id} className={`p-3 bg-white rounded ${it.is_nme ? "border-l-4 border-red-400" : "border"}`}>
+                        <div className="flex justify-between items-start">
+                          <div className="text-sm font-medium">{highlight(it.item_name)}</div>
+                          <div className="text-sm font-mono"><Money value={it.final_amount} /></div>
+                        </div>
+                        <div className="text-xs text-gray-600 mt-1">{it.category}</div>
+                        {it.is_nme && <div className="mt-2"><span className="text-xs px-2 py-1 bg-red-600 text-white rounded">NME</span></div>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             );
           })}
@@ -199,7 +252,7 @@ export default function ClaimPanel({ onJumpToPage }) {
 
       <section className="p-4 bg-white rounded shadow-sm">
         <h3 className="font-semibold">Audit Issues</h3>
-        <div className="mt-2 grid grid-cols-2 gap-4 text-sm">
+        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div>
             <div className="text-xs text-gray-500">Medical legibility</div>
             <div className="font-medium">{audit_analysis.medical_legibility_issues}</div>
@@ -224,7 +277,7 @@ export default function ClaimPanel({ onJumpToPage }) {
       <section className="p-4 bg-white rounded shadow-sm">
         <h3 className="font-semibold">Document Segments</h3>
         <div className="mt-2 space-y-2">
-          {Object.entries(segments.aggregated_segments).map(([key, seg]) => (
+          {Object.entries(segments.aggregated_segments || {}).map(([key, seg]) => (
             <div key={key} className="flex items-center justify-between">
               <div className="capitalize">{key.replace(/_/g, " ")}</div>
               <div className="space-x-2">

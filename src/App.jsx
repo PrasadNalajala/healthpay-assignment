@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PdfViewer from "./components/PdfViewer";
 import ClaimPanel from "./components/ClaimPanel";
 
 export default function App() {
   const [page, setPage] = useState(1);
   const [leftWidth, setLeftWidth] = useState(50); // percent
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileView, setMobileView] = useState("pdf"); // "pdf" or "panel"
   const containerRef = useRef();
 
   function onDragStart(e) {
@@ -24,6 +26,15 @@ export default function App() {
     window.addEventListener("mouseup", onUp);
   }
 
+  useEffect(() => {
+    function onResize() {
+      setIsMobile(window.innerWidth < 768);
+    }
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <div className="h-screen flex flex-col">
       <header className="bg-white shadow-sm py-3 px-4 flex items-center justify-between">
@@ -34,24 +45,59 @@ export default function App() {
         <div className="text-sm text-gray-600">Session: quick-demo</div>
       </header>
 
-      <main ref={containerRef} className="flex-1 flex overflow-hidden">
-        <div
-          className="border-r bg-gray-50 overflow-auto"
-          style={{ width: `${leftWidth}%` }}
-        >
-          <PdfViewer page={page} onChangePage={setPage} />
-        </div>
+      <main ref={containerRef} className="flex-1 flex overflow-hidden flex-col md:flex-row">
+        {isMobile ? (
+          <>
+            <div className="flex-shrink-0 bg-white border-b">
+              <div className="flex items-center justify-center gap-2 p-2">
+                <button
+                  onClick={() => setMobileView("pdf")}
+                  className={`flex-1 text-center px-3 py-2 rounded ${mobileView === "pdf" ? "bg-blue-600 text-white" : "bg-white border"}`}
+                >
+                  PDF
+                </button>
+                <button
+                  onClick={() => setMobileView("panel")}
+                  className={`flex-1 text-center px-3 py-2 rounded ${mobileView === "panel" ? "bg-blue-600 text-white" : "bg-white border"}`}
+                >
+                  Details
+                </button>
+              </div>
+            </div>
 
-        <div
-          onMouseDown={onDragStart}
-          className="cursor-col-resize bg-transparent w-1"
-          style={{ width: 8 }}
-          title="Drag to resize panes"
-        />
+            <div className="flex-1 overflow-auto">
+              {mobileView === "pdf" ? (
+                <div className="bg-gray-50 min-h-full">
+                  <PdfViewer page={page} onChangePage={setPage} />
+                </div>
+              ) : (
+                <div className="p-4">
+                  <ClaimPanel onJumpToPage={(p) => { setPage(p); setMobileView("pdf"); }} />
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className="border-b md:border-b-0 md:border-r bg-gray-50 overflow-auto"
+              style={{ width: `${leftWidth}%`, minWidth: 240 }}
+            >
+              <PdfViewer page={page} onChangePage={setPage} />
+            </div>
 
-        <div className="p-6 overflow-auto" style={{ width: `${100 - leftWidth}%` }}>
-          <ClaimPanel onJumpToPage={setPage} />
-        </div>
+            <div
+              onMouseDown={onDragStart}
+              className="cursor-col-resize bg-transparent"
+              style={{ width: 8 }}
+              title="Drag to resize panes"
+            />
+
+            <div className="p-6 overflow-auto" style={{ width: `${100 - leftWidth}%` }}>
+              <ClaimPanel onJumpToPage={setPage} />
+            </div>
+          </>
+        )}
       </main>
     </div>
   );
